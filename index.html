@@ -39,13 +39,19 @@
     li {
         line-height:1.6em;
     }
-    a:hover::after {
-        color:#000;
+    a::after {
+        color:#FFF;
         content:"}";
     }
-    a:hover::before {
-        color:#000;
+    a::before {
+        color:#FFF;
         content:"{";
+    }
+    a:hover:before {
+        color:#000;
+    }
+    a:hover:after {
+        color:#000;
     }
     </style>
   </head>
