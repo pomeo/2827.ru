@@ -12,6 +12,6 @@ set :repository,  "git@github.com:pomeo/#{application}.git"
 #ROLES
 #========================
 set  :gateway,    "#{application}" # main server
-role :app,        "10.3.110.20"      # container
+role :app,        "10.3.10.30"     # container
 
 after "deploy:create_symlink", "deploy:cleanup"
