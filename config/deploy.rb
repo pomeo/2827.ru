@@ -5,13 +5,29 @@ set :application, "2827.ru"
 #========================
 #CONFIG
 #========================
-require           "capistrano-offroad"
-offroad_modules   "defaults"
+set :scm, :git
+set :deploy_via,  :copy
+set :user,        "ubuntu"
+set :port,        2222
+set :normalize_asset_timestamps, false
+set :copy_exclude, [
+      "/.git/",
+      "/.gitignore",
+      "/Capfile",
+      "/config.yaml",
+      "/Rakefile",
+      "Rules",
+      "/tmp/",
+      "/mkmf.log"
+    ]
+set :use_sudo, false
+set :deploy_to, "/home/ubuntu/www/#{application}/www"
+
 set :repository,  "git@github.com:pomeo/#{application}.git"
 #========================
 #ROLES
 #========================
-set  :gateway,    "#{application}" # main server
-role :app,        "10.3.10.30"     # container
+role  :app, "#{application}" # server
 
-after "deploy:create_symlink", "deploy:cleanup"
+after "deploy:create_symlink",
+      "deploy:cleanup"
